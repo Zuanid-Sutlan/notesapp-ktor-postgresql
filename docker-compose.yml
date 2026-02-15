@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres  # image name is fixed for postgres
+    container_name: postgres_note_app_container  # container name
+    restart: always
+
+    environment:
+      POSTGRES_USER: admin  # username
+      POSTGRES_PASSWORD: secret # password
+      POSTGRES_DB: my_notes_db
+
+    ports:
+      - "5432:5432" # port
+
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+  adminer:
+    image: adminer # image for adminer its also fixed
+    container_name: adminer_note_container
+    restart: always
+    ports:
+      - "8081:8080"
+
+volumes:
+  postgres_data:

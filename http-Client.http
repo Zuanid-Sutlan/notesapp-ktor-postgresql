@@ -1,0 +1,26 @@
+GET http://localhost:8080/notes
+Accept: application/json
+cookie: user_session=%7B%22username%22%3A%22admin%22%7D
+
+###
+POST http://localhost:8080/register
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123",
+  "email": "admin@gmail.com"
+}
+
+###
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+###
+GET localhost:8080/notes
+
