@@ -23,10 +23,11 @@ object DatabaseFactory {
     private const val PASSWORD = "secret"
 
     val config = HikariConfig().apply {
-        jdbcUrl = "jdbc:postgresql://localhost:5432/$DATABASE_NAME"
+//        jdbcUrl = "jdbc:postgresql://localhost:5432/$DATABASE_NAME"
+        jdbcUrl = "jdbc:postgresql://${System.getenv("DB_HOST")}:${System.getenv("DB_PORT")}/${System.getenv("DB_NAME")}"
         driverClassName = "org.postgresql.Driver"
-        username = USERNAME
-        password = PASSWORD
+        username = System.getenv("DB_USER")
+        password = System.getenv("DB_PASSWORD")
         maximumPoolSize = 7
         isReadOnly = false
         transactionIsolation = "TRANSACTION_SERIALIZABLE"

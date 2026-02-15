@@ -1,0 +1,18 @@
+runtime: custom
+env: flex
+
+entrypoint: java -jar build/libs/notesapp-all.jar
+
+env_variables:
+  DB_HOST: postgres
+  DB_PORT: "5432"
+  DB_USER: admin
+  DB_PASSWORD: secret
+  DB_NAME: my_notes_db
+
+automatic_scaling:
+  min_instances: 1
+  max_instances: 3
+
+#networking:
+#  instance_tag: your-instance-tag

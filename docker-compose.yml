@@ -1,6 +1,21 @@
 version: '3.9'
 
 services:
+
+  ktor-app:
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: admin
+      DB_PASSWORD: secret
+      DB_NAME: my_notes_db
+
   postgres:
     image: postgres  # image name is fixed for postgres
     container_name: postgres_note_app_container  # container name
